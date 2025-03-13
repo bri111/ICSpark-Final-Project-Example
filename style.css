@@ -90,9 +90,13 @@ button:hover {
 
 /* Responsive Design */
 @media (max-width: 600px) {
+  #bingo-board {
+    gap: 5px;
+    width: 95vw;
+  }
   .bingo-cell {
-    font-size: 10px;
-    padding: 3px;
+    font-size: 12px;
+    padding: 5px;
   }
   button {
     font-size: 14px;
