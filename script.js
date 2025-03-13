@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const rulesPopup = document.getElementById("rules-popup");
   const rulesBtn = document.getElementById("rules-btn");
   const closeRules = document.getElementById("close-rules");
+  const resetPopup = document.getElementById("reset-popup");
+  const confirmReset = document.getElementById("confirm-reset");
+  const cancelReset = document.getElementById("cancel-reset");
   let gameWon = false;
 
   const prompts = [
@@ -20,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
     "What’s the most creative student project?",
     "Share a cool CS resource",
     "What's your favorite algorithm to teach?",
-    "Where's your favorite place to eat on island?",
     "Talk about a student who inspired you",
+    "Explain a concept using only emojis",
     "What's your biggest teaching challenge?",
     "Favorite classroom icebreaker?",
     "How do you keep students engaged?",
@@ -32,11 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
     "How do you teach debugging strategies?",
     "What’s a fun way to teach binary?",
     "Favorite tech tool for teaching?",
-    "How do you integrate CS with other subjects?",
-    "What's a fun way to teach conditionals?",
-    "How do you introduce cybersecurity topics?",
-    "Best hands-on coding activity?",
-    "How do you engage reluctant learners?"
+    "How do you integrate CS with other subjects?"
   ];
 
   function generateBingoCard() {
@@ -73,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function() {
       grid.push(Array.from(cells).slice(i * 5, i * 5 + 5));
     }
 
-    // Check rows & columns
     for (let i = 0; i < 5; i++) {
       if (grid[i].every(cell => cell.classList.contains("marked")) ||
         grid.map(row => row[i]).every(cell => cell.classList.contains("marked"))) {
@@ -82,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 
-    // Check diagonals
     if (grid.map((row, i) => row[i]).every(cell => cell.classList.contains("marked")) ||
       grid.map((row, i) => row[4 - i]).every(cell => cell.classList.contains("marked"))) {
       declareWin();
@@ -95,7 +92,12 @@ document.addEventListener("DOMContentLoaded", function() {
     gameWon = true;
   }
 
-  resetButton.addEventListener("click", generateBingoCard);
+  resetButton.addEventListener("click", () => resetPopup.style.display = "block");
+  confirmReset.addEventListener("click", () => {
+    resetPopup.style.display = "none";
+    generateBingoCard();
+  });
+  cancelReset.addEventListener("click", () => resetPopup.style.display = "none");
   rulesBtn.addEventListener("click", () => rulesPopup.style.display = "block");
   closeRules.addEventListener("click", () => rulesPopup.style.display = "none");
 
