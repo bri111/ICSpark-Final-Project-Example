@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
     "Share a cool CS resource",
     "What's your favorite algorithm to teach?",
     "Talk about a student who inspired you",
-    "Explain a concept using only emojis",
+    "Where is your favorite place to go eat on island?",
     "What's your biggest teaching challenge?",
     "Favorite classroom icebreaker?",
     "How do you keep students engaged?",
